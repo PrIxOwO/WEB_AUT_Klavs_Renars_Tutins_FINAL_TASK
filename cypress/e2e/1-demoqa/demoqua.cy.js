@@ -11,11 +11,10 @@ describe("Scenario 2", () => {
       cy.get(".react-datepicker__month-select").select("February");
       cy.get(".react-datepicker__year-select").select("1930");
       cy.get(".react-datepicker__day--028")
-        .not(".react-datepicker__day--outside-month")
+        .not(".react-datepicker__day--outside-month") //lai nenemtu pirmo dienu
         .click();
       cy.get("#subjectsInput").type("Economics").type("{enter}");
       cy.get("#hobbiesWrapper > .col-md-9 > :nth-child(3)").click();
-
 
       const imagePath = 'cypress/e2e/files/zurka.jpg';
       cy.get('#uploadPicture').selectFile(imagePath);
@@ -40,7 +39,6 @@ describe("Scenario 2", () => {
         cy.contains("State and City").next().should("contain", "NCR Delhi");
       });
   });
-
   Cypress.on("uncaught:exception", (err, runnable) => {
       return false;
   });
